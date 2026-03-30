@@ -5,9 +5,9 @@ WORKDIR /app
 COPY . .
 
 RUN apt-get update && apt-get install -y \
-    unzip git curl libpng-dev libjpeg-dev libfreetype6-dev libonig-dev \
+    unzip git curl libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libzip-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql mbstring \
+    && docker-php-ext-install gd pdo pdo_mysql mbstring zip \
     && curl -sS https://getcomposer.org/installer | php \
     && php composer.phar install --no-dev --optimize-autoloader
 
